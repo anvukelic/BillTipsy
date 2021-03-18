@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="label_bill">La facture</string>
+  <string name="label_tip_percentage">Pourboire %</string>
+  <string name="label_tip_amount">Montant du pourboire</string>
+  <string name="label_total_bill_amount">Montant total</string>
+
+</resources>

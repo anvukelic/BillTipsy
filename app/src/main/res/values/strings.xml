@@ -1,0 +1,9 @@
+<resources>
+  <string name="app_name" translatable="false">Bill Tipsy</string>
+
+  <string name="label_bill">Bill</string>
+  <string name="label_tip_percentage">Tip %</string>
+  <string name="label_tip_amount">Tip Amount</string>
+  <string name="label_total_bill_amount">Total Amount</string>
+
+</resources>

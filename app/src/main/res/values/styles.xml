@@ -1,0 +1,43 @@
+<resources>
+
+  <!-- Splash Screen Theme -->
+  <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+    <item name="android:windowBackground">@drawable/splash_background</item>
+    <item name="android:windowTranslucentStatus">true</item>
+    <item name="android:windowTranslucentNavigation">true</item>
+  </style>
+
+  <!-- Base application Theme -->
+  <style name="AppTheme" parent="Theme.AppCompat">
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@color/colorAccent</item>
+  </style>
+
+  <style name="LabelTheme">
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:layout_marginStart">@dimen/default_margin</item>
+    <item name="android:layout_marginTop">@dimen/default_margin</item>
+    <item name="android:textAlignment">center</item>
+  </style>
+
+  <style name="InputFieldTheme">
+    <item name="android:background">@color/material_grey_600</item>
+    <item name="android:layout_marginTop">@dimen/default_margin</item>
+    <item name="android:layout_marginStart">@dimen/default_margin</item>
+    <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    <item name="android:padding">4dp</item>
+    <item name="android:minWidth">150dp</item>
+    <item name="android:textSize">20sp</item>
+    <item name="android:textAlignment">center</item>
+  </style>
+
+  <style name="NonEditableInputFieldTheme" parent="InputFieldTheme">
+    <item name="android:clickable">false</item>
+    <item name="android:cursorVisible">false</item>
+    <item name="android:focusable">false</item>
+    <item name="android:focusableInTouchMode">false</item>
+  </style>
+
+</resources>

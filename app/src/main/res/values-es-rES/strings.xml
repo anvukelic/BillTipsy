@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <string name="label_bill">Factura</string>
+  <string name="label_tip_percentage">Propina %</string>
+  <string name="label_tip_amount">Cantidad de propina</string>
+  <string name="label_total_bill_amount">Cantidad de propina</string>
+
+</resources>
