@@ -1,97 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context="com.raywenderlich.android.bill_tipsy.MainActivity">
 
-  <EditText
-    android:id="@+id/billAmountInput"
-    style="@style/InputFieldTheme"
-    android:layout_width="0dp"
+  <LinearLayout
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:digits="0123456789,."
-    android:inputType="numberDecimal"
-    android:maxLength="9"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/billLabel"
-    tools:text="20,00 $" />
+    android:orientation="vertical">
 
-  <EditText
-    android:id="@+id/tipPercentageInput"
-    style="@style/InputFieldTheme"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:digits="0123456789 %"
-    android:inputType="number"
-    android:maxLength="5"
-    android:text="15 %"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tipPercentageLabel"
-    tools:text="10 %" />
+    <TextView
+      android:id="@+id/billLabel"
+      style="@style/LabelTheme"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/label_bill" />
 
-  <EditText
-    android:id="@+id/tipAmountInput"
-    style="@style/NonEditableInputFieldTheme"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tipAmountLabel"
-    tools:text="2" />
+    <EditText
+      android:id="@+id/billAmountInput"
+      style="@style/InputFieldTheme"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:digits="0123456789,."
+      android:inputType="numberDecimal"
+      android:maxLength="9"
+      tools:text="20,00 $" />
 
-  <EditText
-    android:id="@+id/totalAmountInput"
-    style="@style/NonEditableInputFieldTheme"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/totalAmountLabel"
-    tools:text="22,00" />
+    <TextView
+      android:id="@+id/tipPercentageLabel"
+      style="@style/LabelTheme"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/label_tip_percentage" />
 
-  <TextView
-    android:id="@+id/billLabel"
-    style="@style/LabelTheme"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/default_margin"
-    android:layout_marginTop="@dimen/default_margin"
-    android:text="@string/label_bill"
-    android:textSize="20sp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <EditText
+      android:id="@+id/tipPercentageInput"
+      style="@style/InputFieldTheme"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:digits="0123456789 %"
+      android:inputType="number"
+      android:maxLength="5"
+      android:text="15 %"
+      tools:text="10 %" />
 
-  <TextView
-    android:id="@+id/tipPercentageLabel"
-    style="@style/LabelTheme"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/label_tip_percentage"
-    android:textSize="20sp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/billAmountInput" />
+    <TextView
+      android:id="@+id/tipAmountLabel"
+      style="@style/LabelTheme"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/label_tip_amount" />
 
-  <TextView
-    android:id="@+id/tipAmountLabel"
-    style="@style/LabelTheme"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/label_tip_amount"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tipPercentageInput" />
+    <TextView
+      android:id="@+id/tipAmountInput"
+      style="@style/ResultFieldTheme"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:text="2" />
 
-  <TextView
-    android:id="@+id/totalAmountLabel"
-    style="@style/LabelTheme"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="@string/label_total_bill_amount"
-    android:textSize="20sp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tipAmountInput" />
+    <TextView
+      android:id="@+id/totalAmountLabel"
+      style="@style/LabelTheme"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/label_total_bill_amount" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+      android:id="@+id/totalAmountInput"
+      style="@style/ResultFieldTheme"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:text="22,00" />
+
+  </LinearLayout>
+
+</ScrollView>

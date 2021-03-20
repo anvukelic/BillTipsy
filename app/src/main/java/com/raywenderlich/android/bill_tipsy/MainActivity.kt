@@ -39,6 +39,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.raywenderlich.android.billtipsy.R
 import kotlinx.android.synthetic.main.activity_main.*
 
+// Use these constants as a keys for saving and restoring data on Activity recreation
 private const val KEY_BILL_AMOUNT = "key_bill_amount"
 private const val KEY_TIP_PERCENT = "key_tip_percent"
 
@@ -52,8 +53,8 @@ class MainActivity : AppCompatActivity() {
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
-    outState.putDouble(KEY_BILL_AMOUNT, billAmount)
-    outState.putInt(KEY_TIP_PERCENT, tipPercentage)
+
+    // TODO: Save bill amount and tip percentage to the outState
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -62,41 +63,26 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    // Handle saved instance state if exists
-    savedInstanceState?.let { restoreState(it) } ?: initiateValues()
-
-    // Set actions to the percentage decrement/increment buttons
-    setTipPercentageTextWatcher()
-
-    // Listen for the changes in Bill amount input
-    setBillAmountTextWatcher()
+    // TODO: Initialize views on the Activity first creation or restore state if Activity is recreated
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
-    // Read the values after activity recreates
-    billAmount = savedInstanceState.getDouble(KEY_BILL_AMOUNT)
-    tipPercentage = savedInstanceState.getInt(KEY_TIP_PERCENT)
+    // TODO: Read values from the savedInstanceState
   }
 
   private fun initiateValues() {
     // Initialize text fields with localized formatted default values
     billAmountInput.setText(billAmount.formatToNumber())
-    tipAmountInput.setText(0.0.formatToAmount())
-    totalAmountInput.setText(0.0.formatToAmount())
+    tipAmountInput.text = 0.0.formatToAmount()
+    totalAmountInput.text = 0.0.formatToAmount()
   }
 
   private fun setBillAmountTextWatcher() {
-    billAmountInput.addTextChangedListener(BillAmountTextWatcher { newBillAmount ->
-      billAmount = newBillAmount
-      calculateTipAndTotalAmount()
-    })
+    // TODO: Apply text watcher to the bill amount input field
   }
 
   private fun setTipPercentageTextWatcher() {
-    tipPercentageInput.addTextChangedListener(TipPercentageTextWatcher { newTipPercentage ->
-      tipPercentage = newTipPercentage
-      calculateTipAndTotalAmount()
-    })
+    // TODO: Apply text watcher to the tip percentage input field
   }
 
   private fun calculateTipAndTotalAmount() {
@@ -104,7 +90,7 @@ class MainActivity : AppCompatActivity() {
     val tipAmount = billAmount * (tipPercentage / 100.toDouble())
 
     // Update rest of the fields
-    tipAmountInput.setText(tipAmount.formatToAmount())
-    totalAmountInput.setText((billAmount + tipAmount).formatToAmount())
+    tipAmountInput.text = tipAmount.formatToAmount()
+    totalAmountInput.text = (billAmount + tipAmount).formatToAmount()
   }
 }
