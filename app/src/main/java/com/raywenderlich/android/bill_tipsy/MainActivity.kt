@@ -63,7 +63,10 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    // TODO: Initialize views on the Activity first creation or restore state if Activity is recreated
+    savedInstanceState?.let { restoreState(it) }?: initiateValues()
+
+    setBillAmountTextWatcher()
+    setTipPercentageTextWatcher()
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
