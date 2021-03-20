@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-  android:layout_height="wrap_content"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:tools="http://schemas.android.com/tools"
-  android:orientation="vertical"
-  xmlns:android="http://schemas.android.com/apk/res/android">
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
 
   <TextView
-    style="@style/InputLabelTheme"
     android:id="@+id/billLabel"
+    style="@style/InputLabelTheme"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/label_bill" />
 
   <EditText
-    style="@style/InputFieldTheme"
     android:id="@+id/billAmountInput"
+    style="@style/InputFieldTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:digits="0123456789,."
@@ -23,15 +23,15 @@
     tools:text="20,00 $" />
 
   <TextView
-    style="@style/InputLabelTheme"
     android:id="@+id/tipPercentageLabel"
+    style="@style/InputLabelTheme"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/label_tip_percentage" />
 
   <EditText
-    style="@style/InputFieldTheme"
     android:id="@+id/tipPercentageInput"
+    style="@style/InputFieldTheme"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:digits="0123456789 %"
@@ -47,15 +47,15 @@
     android:orientation="horizontal">
 
     <TextView
-      style="@style/ResultLabelTheme"
       android:id="@+id/tipAmountLabel"
+      style="@style/ResultLabelTheme"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/label_tip_amount" />
 
     <TextView
-      style="@style/ResultFieldTheme"
       android:id="@+id/tipAmountInput"
+      style="@style/ResultFieldTheme"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="0dp"
@@ -71,15 +71,15 @@
     android:orientation="horizontal">
 
     <TextView
-      style="@style/ResultLabelTheme"
       android:id="@+id/totalAmountLabel"
+      style="@style/ResultLabelTheme"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/label_total_bill_amount" />
 
     <TextView
-      style="@style/ResultFieldTheme"
       android:id="@+id/totalAmountInput"
+      style="@style/ResultFieldTheme"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="0dp"
