@@ -41,10 +41,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 private const val KEY_BILL_AMOUNT = "key_bill_amount"
 private const val KEY_TIP_PERCENT = "key_tip_percent"
-private const val MINIMUM_TIP_PERCENTAGE = 0
 
 /**
- * Main Screen
+ * Main Screen of the app.
  */
 class MainActivity : AppCompatActivity() {
 
@@ -63,49 +62,49 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    // Handle saved instance state if exists
     savedInstanceState?.let { restoreState(it) } ?: initiateValues()
-    setPercentageClickListeners()
+
+    // Set actions to the percentage decrement/increment buttons
+    setTipPercentageTextWatcher()
+
+    // Listen for the changes in Bill amount input
     setBillAmountTextWatcher()
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
+    // Read the values after activity recreates
     billAmount = savedInstanceState.getDouble(KEY_BILL_AMOUNT)
     tipPercentage = savedInstanceState.getInt(KEY_TIP_PERCENT)
-    billAmountInput.setText(billAmount.formatToNumber())
-    tipPercentageInput.setText(tipPercentage.formatToPercentage())
-    calculateTipAndTotalAmount()
   }
 
   private fun initiateValues() {
+    // Initialize text fields with localized formatted default values
     billAmountInput.setText(billAmount.formatToNumber())
     tipAmountInput.setText(0.0.formatToAmount())
     totalAmountInput.setText(0.0.formatToAmount())
   }
 
-  private fun setPercentageClickListeners() {
-    incrementTipPercentage.setOnClickListener {
-      tipPercentage = tipPercentage.inc()
-      calculateTipAndTotalAmount()
-    }
-
-    decrementTipPercentage.setOnClickListener {
-      tipPercentage = tipPercentage.dec()
-      calculateTipAndTotalAmount()
-    }
-  }
-
   private fun setBillAmountTextWatcher() {
-    billAmountInput.addTextChangedListener(BillAmountTextWatcher() { newBillAmount ->
+    billAmountInput.addTextChangedListener(BillAmountTextWatcher { newBillAmount ->
       billAmount = newBillAmount
       calculateTipAndTotalAmount()
     })
   }
 
+  private fun setTipPercentageTextWatcher() {
+    tipPercentageInput.addTextChangedListener(TipPercentageTextWatcher { newTipPercentage ->
+      tipPercentage = newTipPercentage
+      calculateTipAndTotalAmount()
+    })
+  }
+
   private fun calculateTipAndTotalAmount() {
-    tipPercentageInput.setText(tipPercentage.formatToPercentage())
-    val tipAmount = billAmount.toBigDecimal().multiply(tipPercentage.toBigDecimal().divide(100.toBigDecimal()))
-    tipAmountInput.setText(tipAmount.toDouble().formatToAmount())
-    totalAmountInput.setText((billAmount.toBigDecimal() + tipAmount).toDouble().formatToAmount())
-    decrementTipPercentage.isEnabled = (tipPercentage == MINIMUM_TIP_PERCENTAGE).not()
+    // Calculate tip amount
+    val tipAmount = billAmount * (tipPercentage / 100.toDouble())
+
+    // Update rest of the fields
+    tipAmountInput.setText(tipAmount.formatToAmount())
+    totalAmountInput.setText((billAmount + tipAmount).formatToAmount())
   }
 }

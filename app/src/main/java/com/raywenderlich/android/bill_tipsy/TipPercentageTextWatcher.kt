@@ -34,16 +34,18 @@
 package com.raywenderlich.android.bill_tipsy
 
 import android.text.Editable
+import android.text.Selection
+import android.text.Spannable
 import android.text.TextWatcher
 
-private const val MAXIMUM_VALUE = 1000000.00
+private const val MAXIMUM_VALUE = 999
 
 /**
  * This class is part of the starter project.
- * Student will apply it to the Bill Amount EditText.
+ * Student will apply it to the Tip Percentage EditText.
  */
-class BillAmountTextWatcher(
-    private val onNewAmount: (Double) -> Unit
+class TipPercentageTextWatcher(
+    private val onNewPercentage: (Int) -> Unit
 ) : TextWatcher {
 
   var isEditing: Boolean = false
@@ -55,20 +57,18 @@ class BillAmountTextWatcher(
   override fun afterTextChanged(editable: Editable) {
     if (isEditing.not()) {
       isEditing = true
-      val billAmount = editable.toString().parseAmount() / 100
 
-      val isValidAmount = billAmount <= MAXIMUM_VALUE
+      val tipPercentage = editable.toString().parsePercentage()
+      val isValidInput = tipPercentage <= MAXIMUM_VALUE
 
-      val formattedAmount = if (isValidAmount) billAmount.formatToNumber() else MAXIMUM_VALUE.formatToNumber()
-      val shouldMoveSelection = formattedAmount.length > editable.length
-      editable.replace(0, editable.length, formattedAmount)
+      val formattedValue = if(isValidInput) tipPercentage.formatToPercentage() else MAXIMUM_VALUE.formatToPercentage()
 
-      if (shouldMoveSelection) {
-        editable.moveSelection()
-      }
+      editable.replace(0, editable.length, formattedValue)
 
-      onNewAmount.invoke(formattedAmount.parseAmount())
+      onNewPercentage.invoke(if(isValidInput) tipPercentage else MAXIMUM_VALUE)
       isEditing = false
     }
   }
+
+
 }

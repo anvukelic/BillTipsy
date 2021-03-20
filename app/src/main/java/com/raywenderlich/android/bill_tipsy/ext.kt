@@ -33,6 +33,9 @@
  */
 package com.raywenderlich.android.bill_tipsy
 
+import android.text.Editable
+import android.text.Selection
+import android.text.Spannable
 import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
@@ -41,18 +44,22 @@ const val NUMBER_OF_FRACTION_DIGITS = 2
 
 fun Int.formatToPercentage(): String = String.format("%d %%", this)
 
-fun Double.formatToNumber(): String{
+fun String.parsePercentage(): Int = with(this.replace("%", "").trim()) {
+  if (this.isEmpty()) 0 else toInt()
+}
+
+fun Double.formatToNumber(): String {
   val numberFormat = DecimalFormat.getInstance(Locale.getDefault()).apply {
     maximumFractionDigits = NUMBER_OF_FRACTION_DIGITS
     minimumFractionDigits = NUMBER_OF_FRACTION_DIGITS
   }
-  return numberFormat.format(this.toBigDecimal().divide(100.toBigDecimal()).toDouble())
+  return numberFormat.format(this)
 }
 
 fun Double.formatToAmount(): String {
   val numberFormat = NumberFormat.getCurrencyInstance(Locale.getDefault())
   numberFormat.currency = Currency.getInstance(Locale.getDefault())
-  return numberFormat.format(this.toBigDecimal().divide(100.toBigDecimal()).toDouble())
+  return numberFormat.format(this / 100)
 }
 
 fun String.parseAmount(): Double {
@@ -61,4 +68,14 @@ fun String.parseAmount(): Double {
   }
   val symbol = Currency.getInstance(Locale.getDefault()).symbol
   return this.replace("""[$symbol,.\s]""".toRegex(), "").toDouble()
+}
+
+fun Editable.moveSelection() {
+  val newSelectionPosition = this.getSpanStart(Selection.SELECTION_START) + 1
+  if (newSelectionPosition < this.length) {
+    this.setSpan(Selection.SELECTION_START, newSelectionPosition, newSelectionPosition,
+        Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+    this.setSpan(Selection.SELECTION_END, newSelectionPosition, newSelectionPosition,
+        Spannable.SPAN_EXCLUSIVE_INCLUSIVE)
+  }
 }

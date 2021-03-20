@@ -11,3 +11,8 @@ In this project, student will learn basics of the next Android concepts:
 - View Interactions
 - Localizations
 
+Note:
+Following classes are here only as a support and student should not update any:
+- ext.kt
+- BillAmountTextWatcher.kt
+- TipPercentageTextWatcher.kt
