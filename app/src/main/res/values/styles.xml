@@ -19,8 +19,8 @@
     <item name="android:textSize">@dimen/small_text_size</item>
     <item name="android:layout_marginStart">@dimen/default_margin</item>
     <item name="android:layout_marginTop">@dimen/default_margin</item>
-    <item name="android:textColor">@android:color/white</item>
     <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    <item name="android:textColor">@android:color/white</item>
   </style>
 
   <style name="ResultLabelTheme" parent="InputLabelTheme">
