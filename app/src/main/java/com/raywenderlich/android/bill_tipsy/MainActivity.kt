@@ -81,8 +81,9 @@ class MainActivity : AppCompatActivity() {
   private fun initiateValues() {
     // Initialize text fields with localized formatted default values
     billAmountInput.setText(billAmount.formatToNumber())
-    tipAmountInput.setText(0.0.formatToAmount())
-    totalAmountInput.setText(0.0.formatToAmount())
+    tipPercentageInput.setText(tipPercentage.formatToPercentage())
+    tipAmountInput.text = (0.0.formatToAmount())
+    totalAmountInput.text = (0.0.formatToAmount())
   }
 
   private fun setBillAmountTextWatcher() {
@@ -104,7 +105,7 @@ class MainActivity : AppCompatActivity() {
     val tipAmount = billAmount * (tipPercentage / 100.toDouble())
 
     // Update rest of the fields
-    tipAmountInput.setText(tipAmount.formatToAmount())
-    totalAmountInput.setText((billAmount + tipAmount).formatToAmount())
+    tipAmountInput.text = (tipAmount.formatToAmount())
+    totalAmountInput.text = ((billAmount + tipAmount).formatToAmount())
   }
 }

@@ -14,30 +14,37 @@
     <item name="colorAccent">@color/colorAccent</item>
   </style>
 
-  <style name="LabelTheme">
+  <style name="InputLabelTheme">
     <item name="android:fontFamily">sans-serif-medium</item>
-    <item name="android:textSize">20sp</item>
+    <item name="android:textSize">@dimen/small_text_size</item>
     <item name="android:layout_marginStart">@dimen/default_margin</item>
     <item name="android:layout_marginTop">@dimen/default_margin</item>
-    <item name="android:textAlignment">center</item>
+    <item name="android:layout_marginEnd">@dimen/default_margin</item>
+  </style>
+
+  <style name="ResultLabelTheme" parent="InputLabelTheme">
+    <item name="android:layout_marginTop">0dp</item>
+    <item name="android:textSize">@dimen/large_text_size</item>
   </style>
 
   <style name="InputFieldTheme">
     <item name="android:background">@color/material_grey_600</item>
-    <item name="android:layout_marginTop">@dimen/default_margin</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:layout_marginTop">@dimen/small_margin</item>
     <item name="android:layout_marginStart">@dimen/default_margin</item>
     <item name="android:layout_marginEnd">@dimen/default_margin</item>
-    <item name="android:padding">4dp</item>
-    <item name="android:minWidth">150dp</item>
-    <item name="android:textSize">20sp</item>
+    <item name="android:padding">@dimen/extra_small_padding</item>
+    <item name="android:textSize">@dimen/default_text_size</item>
     <item name="android:textAlignment">center</item>
   </style>
 
-  <style name="NonEditableInputFieldTheme" parent="InputFieldTheme">
-    <item name="android:clickable">false</item>
-    <item name="android:cursorVisible">false</item>
-    <item name="android:focusable">false</item>
-    <item name="android:focusableInTouchMode">false</item>
+  <style name="ResultFieldTheme">
+    <item name="android:layout_marginEnd">@dimen/default_margin</item>
+    <item name="android:layout_marginTop">@dimen/default_margin</item>
+    <item name="android:fontFamily">sans-serif-medium</item>
+    <item name="android:textSize">@dimen/large_text_size</item>
+    <item name="android:color">@android:color/white</item>
+    <item name="android:textAlignment">textEnd</item>
   </style>
 
 </resources>
