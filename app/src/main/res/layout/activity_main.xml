@@ -1,78 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout android:layout_width="match_parent"
+  android:layout_height="wrap_content"
   xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context="com.raywenderlich.android.bill_tipsy.MainActivity">
+  android:orientation="vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <TextView
+    style="@style/InputLabelTheme"
+    android:id="@+id/billLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/label_bill" />
+
+  <EditText
+    style="@style/InputFieldTheme"
+    android:id="@+id/billAmountInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:digits="0123456789,."
+    android:inputType="numberDecimal"
+    android:maxLength="9"
+    tools:text="20,00 $" />
+
+  <TextView
+    style="@style/InputLabelTheme"
+    android:id="@+id/tipPercentageLabel"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/label_tip_percentage" />
+
+  <EditText
+    style="@style/InputFieldTheme"
+    android:id="@+id/tipPercentageInput"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:digits="0123456789 %"
+    android:inputType="number"
+    android:maxLength="5"
+    android:text="15 %"
+    tools:text="10 %" />
 
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_marginTop="@dimen/default_margin"
+    android:orientation="horizontal">
 
     <TextView
-      android:id="@+id/billLabel"
-      style="@style/LabelTheme"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/label_bill" />
-
-    <EditText
-      android:id="@+id/billAmountInput"
-      style="@style/InputFieldTheme"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:digits="0123456789,."
-      android:inputType="numberDecimal"
-      android:maxLength="9"
-      tools:text="20,00 $" />
-
-    <TextView
-      android:id="@+id/tipPercentageLabel"
-      style="@style/LabelTheme"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="@string/label_tip_percentage" />
-
-    <EditText
-      android:id="@+id/tipPercentageInput"
-      style="@style/InputFieldTheme"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:digits="0123456789 %"
-      android:inputType="number"
-      android:maxLength="5"
-      android:text="15 %"
-      tools:text="10 %" />
-
-    <TextView
+      style="@style/ResultLabelTheme"
       android:id="@+id/tipAmountLabel"
-      style="@style/LabelTheme"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/label_tip_amount" />
 
     <TextView
-      android:id="@+id/tipAmountInput"
       style="@style/ResultFieldTheme"
+      android:id="@+id/tipAmountInput"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="0dp"
+      android:text="0"
       tools:text="2" />
 
+  </LinearLayout>
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/default_margin"
+    android:orientation="horizontal">
+
     <TextView
+      style="@style/ResultLabelTheme"
       android:id="@+id/totalAmountLabel"
-      style="@style/LabelTheme"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:text="@string/label_total_bill_amount" />
 
     <TextView
-      android:id="@+id/totalAmountInput"
       style="@style/ResultFieldTheme"
+      android:id="@+id/totalAmountInput"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+      android:layout_marginTop="0dp"
+      android:text="0"
       tools:text="22,00" />
 
   </LinearLayout>
 
-</ScrollView>
+</LinearLayout>
