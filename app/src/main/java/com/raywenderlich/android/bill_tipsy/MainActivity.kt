@@ -40,7 +40,7 @@ import com.raywenderlich.android.billtipsy.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val KEY_BILL_AMOUNT = "key_bill_amount"
-private const val KEY_TIP_PERCENT = "key_tip_percent"
+private const val KEY_TIP_PERCENTAGE = "key_tip_percentage"
 
 /**
  * Main Screen of the app.
@@ -50,10 +50,20 @@ class MainActivity : AppCompatActivity() {
   private var _billAmount: Double = 0.0
   private var _tipPercentage: Int = 15
 
+  private val billAmountTextWatcher = BillAmountTextWatcher { newBillAmount ->
+    _billAmount = newBillAmount
+    calculateTipAndTotalAmount()
+  }
+
+  private val tipPercentageTextWatcher = TipPercentageTextWatcher { newTipPercentage ->
+    _tipPercentage = newTipPercentage
+    calculateTipAndTotalAmount()
+  }
+
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
     outState.putDouble(KEY_BILL_AMOUNT, _billAmount)
-    outState.putInt(KEY_TIP_PERCENT, _tipPercentage)
+    outState.putInt(KEY_TIP_PERCENTAGE, _tipPercentage)
   }
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -65,20 +75,29 @@ class MainActivity : AppCompatActivity() {
     // Handle saved instance state if exists
     savedInstanceState?.let { restoreState(it) } ?: initiateValues()
 
-    // Listen for the changes in Tip percentage input
-    setTipPercentageTextWatcher()
-
-    // Listen for the changes in Bill amount input
-    setBillAmountTextWatcher()
-
     // Set actions to the percentage decrement/increment buttons
     setTipPercentageControlClickListeners()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    // Listen for the changes in the Bill Amount and Tip percentage input
+    billAmountInput.addTextChangedListener(billAmountTextWatcher)
+    tipPercentageInput.addTextChangedListener(tipPercentageTextWatcher)
+  }
+
+  override fun onPause() {
+    super.onPause()
+    billAmountInput.removeTextChangedListener(billAmountTextWatcher)
+    tipPercentageInput.removeTextChangedListener(tipPercentageTextWatcher)
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
     // Read the values after activity recreates
     _billAmount = savedInstanceState.getDouble(KEY_BILL_AMOUNT)
-    _tipPercentage = savedInstanceState.getInt(KEY_TIP_PERCENT)
+    _tipPercentage = savedInstanceState.getInt(KEY_TIP_PERCENTAGE)
+
+    calculateTipAndTotalAmount()
   }
 
   private fun initiateValues() {
@@ -87,20 +106,6 @@ class MainActivity : AppCompatActivity() {
     tipPercentageInput.setText(_tipPercentage.formatToPercentage())
     tipAmount.text = (0.0.formatToAmount())
     totalAmount.text = (0.0.formatToAmount())
-  }
-
-  private fun setBillAmountTextWatcher() {
-    billAmountInput.addTextChangedListener(BillAmountTextWatcher { newBillAmount ->
-      _billAmount = newBillAmount
-      calculateTipAndTotalAmount()
-    })
-  }
-
-  private fun setTipPercentageTextWatcher() {
-    tipPercentageInput.addTextChangedListener(TipPercentageTextWatcher { newTipPercentage ->
-      _tipPercentage = newTipPercentage
-      calculateTipAndTotalAmount()
-    })
   }
 
   private fun setTipPercentageControlClickListeners() {
