@@ -41,7 +41,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 // Use these constants as a keys for saving and restoring data on Activity recreation
 private const val KEY_BILL_AMOUNT = "key_bill_amount"
-private const val KEY_TIP_PERCENT = "key_tip_percent"
+private const val KEY_TIP_PERCENTAGE = "key_tip_percentage"
 
 /**
  * Main Screen of the app.
@@ -50,6 +50,16 @@ class MainActivity : AppCompatActivity() {
 
   private var _billAmount: Double = 0.0
   private var _tipPercentage: Int = 15
+
+  private val billAmountTextWatcher = BillAmountTextWatcher { newBillAmount ->
+    _billAmount = newBillAmount
+    calculateTipAndTotalAmount()
+  }
+
+  private val tipPercentageTextWatcher = TipPercentageTextWatcher { newTipPercentage ->
+    _tipPercentage = newTipPercentage
+    calculateTipAndTotalAmount()
+  }
 
   override fun onSaveInstanceState(outState: Bundle) {
     super.onSaveInstanceState(outState)
@@ -63,11 +73,24 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    // Handle saved instance state if exists
     savedInstanceState?.let { restoreState(it) } ?: initiateValues()
 
-    setBillAmountTextWatcher()
-    setTipPercentageTextWatcher()
+    // Set actions to the percentage decrement/increment buttons
     setTipPercentageControlClickListeners()
+  }
+
+  override fun onResume() {
+    super.onResume()
+    // Listen for the changes in the Bill Amount and Tip percentage input
+    billAmountInput.addTextChangedListener(billAmountTextWatcher)
+    tipPercentageInput.addTextChangedListener(tipPercentageTextWatcher)
+  }
+
+  override fun onPause() {
+    super.onPause()
+    billAmountInput.removeTextChangedListener(billAmountTextWatcher)
+    tipPercentageInput.removeTextChangedListener(tipPercentageTextWatcher)
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
@@ -79,14 +102,6 @@ class MainActivity : AppCompatActivity() {
     billAmountInput.setText(_billAmount.formatToNumber())
     tipAmount.text = 0.0.formatToAmount()
     totalAmount.text = 0.0.formatToAmount()
-  }
-
-  private fun setBillAmountTextWatcher() {
-    // TODO: Apply text watcher to the bill amount input field
-  }
-
-  private fun setTipPercentageTextWatcher() {
-    // TODO: Apply text watcher to the tip percentage input field
   }
 
   private fun setTipPercentageControlClickListeners() {
