@@ -63,10 +63,11 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    savedInstanceState?.let { restoreState(it) }?: initiateValues()
+    savedInstanceState?.let { restoreState(it) } ?: initiateValues()
 
     setBillAmountTextWatcher()
     setTipPercentageTextWatcher()
+    setTipPercentageControlClickListeners()
   }
 
   private fun restoreState(savedInstanceState: Bundle) {
@@ -86,6 +87,10 @@ class MainActivity : AppCompatActivity() {
 
   private fun setTipPercentageTextWatcher() {
     // TODO: Apply text watcher to the tip percentage input field
+  }
+
+  private fun setTipPercentageControlClickListeners() {
+    // TODO: Add click listeners to the tip percentage control buttons
   }
 
   private fun calculateTipAndTotalAmount() {

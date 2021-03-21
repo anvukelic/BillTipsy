@@ -40,6 +40,31 @@
     android:text="15 %"
     tools:text="10 %" />
 
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/small_margin">
+
+    <Button
+      android:id="@+id/decrementTipPercentage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentStart="true"
+      android:layout_marginStart="@dimen/default_margin"
+      android:text="@string/decrement_symbol"
+      android:textSize="@dimen/large_text_size" />
+
+    <Button
+      android:id="@+id/incrementTipPercentage"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentEnd="true"
+      android:layout_marginEnd="@dimen/default_margin"
+      android:text="@string/increment_symbol"
+      android:textSize="@dimen/large_text_size" />
+
+  </RelativeLayout>
+
   <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
