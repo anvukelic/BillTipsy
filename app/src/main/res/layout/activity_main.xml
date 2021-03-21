@@ -79,7 +79,7 @@
       android:text="@string/label_tip_amount" />
 
     <TextView
-      android:id="@+id/tipAmountInput"
+      android:id="@+id/tipAmount"
       style="@style/ResultFieldTheme"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
       android:text="@string/label_total_bill_amount" />
 
     <TextView
-      android:id="@+id/totalAmountInput"
+      android:id="@+id/totalAmount"
       style="@style/ResultFieldTheme"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
