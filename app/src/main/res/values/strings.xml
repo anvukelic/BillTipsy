@@ -1,5 +1,7 @@
 <resources>
   <string name="app_name" translatable="false">Bill Tipsy</string>
+  <string name="decrement_symbol" translatable="false">-</string>
+  <string name="increment_symbol" translatable="false">+</string>
 
   <string name="label_bill">Bill</string>
   <string name="label_tip_percentage">Tip %</string>
