@@ -108,8 +108,14 @@ class MainActivity : AppCompatActivity() {
     // TODO: Add click listeners to the tip percentage control buttons
   }
 
-  private fun doOnTipPercentageControlButton(shouldIncrement: Boolean) {
-    _tipPercentage = if (shouldIncrement) _tipPercentage.inc() else _tipPercentage.dec()
+  private fun incrementPercentage() {
+    _tipPercentage = _tipPercentage.inc()
+    tipPercentageInput.setText(_tipPercentage.toString())
+    calculateTipAndTotalAmount()
+  }
+
+  private fun decrementPercentage() {
+    _tipPercentage = _tipPercentage.dec()
     tipPercentageInput.setText(_tipPercentage.toString())
     calculateTipAndTotalAmount()
   }
