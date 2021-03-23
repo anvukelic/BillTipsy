@@ -16,3 +16,5 @@ Following classes are here only as a support and student should not update any:
 - ext.kt
 - BillAmountTextWatcher.kt
 - TipPercentageTextWatcher.kt
+
+Code is result of doing step-by-step [How To Create a Tip Calculator on Android](https://docs.google.com/document/d/10YB8ZSajhm7rcEbBzs-n6AQJZzXNoVS3sKZzHZIyRkA/edit?usp=sharing) tutorial.
