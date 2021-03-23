@@ -49,6 +49,7 @@
     android:digits="0123456789 %"
     android:inputType="number"
     android:maxLength="5"
+    android:text="15 %"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toBottomOf="@id/tipPercentageLabel"
@@ -58,21 +59,21 @@
     android:id="@+id/decrementTipPercentage"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/tipPercentageInput"
     android:layout_marginStart="@dimen/default_margin"
     android:text="@string/decrement_symbol"
-    android:textSize="@dimen/large_text_size" />
+    android:textSize="@dimen/large_text_size"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tipPercentageInput" />
 
   <Button
     android:id="@+id/incrementTipPercentage"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    app:layout_constraintTop_toBottomOf="@id/tipPercentageInput"
-    app:layout_constraintEnd_toEndOf="parent"
     android:layout_marginEnd="@dimen/default_margin"
     android:text="@string/increment_symbol"
-    android:textSize="@dimen/large_text_size" />
+    android:textSize="@dimen/large_text_size"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/tipPercentageInput" />
 
   <TextView
     android:id="@+id/tipAmountLabel"

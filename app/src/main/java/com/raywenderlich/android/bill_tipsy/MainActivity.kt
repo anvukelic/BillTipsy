@@ -103,23 +103,28 @@ class MainActivity : AppCompatActivity() {
   private fun initiateValues() {
     // Initialize text fields with localized formatted default values
     billAmountInput.setText(_billAmount.formatToNumber())
-    tipPercentageInput.setText(_tipPercentage.formatToPercentage())
-    tipAmount.text = (0.0.formatToAmount())
-    totalAmount.text = (0.0.formatToAmount())
+    tipAmount.text = 0.0.formatToAmount()
+    totalAmount.text = 0.0.formatToAmount()
   }
 
   private fun setTipPercentageControlClickListeners() {
     incrementTipPercentage.setOnClickListener {
-      doOnTipPercentageControlButton(true)
+      incrementPercentage()
     }
 
     decrementTipPercentage.setOnClickListener {
-      doOnTipPercentageControlButton(false)
+      decrementPercentage()
     }
   }
 
-  private fun doOnTipPercentageControlButton(shouldIncrement: Boolean) {
-    _tipPercentage = if (shouldIncrement) _tipPercentage.inc() else _tipPercentage.dec()
+  private fun incrementPercentage() {
+    _tipPercentage = _tipPercentage.inc()
+    tipPercentageInput.setText(_tipPercentage.toString())
+    calculateTipAndTotalAmount()
+  }
+
+  private fun decrementPercentage() {
+    _tipPercentage = _tipPercentage.dec()
     tipPercentageInput.setText(_tipPercentage.toString())
     calculateTipAndTotalAmount()
   }
